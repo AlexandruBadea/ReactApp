@@ -1,23 +1,26 @@
-import logo from './logo.svg';
 import './App.css';
+import {Header} from './Header';
+import {InputAge} from './inputAge';
+import {useState} from 'react';
+import {Users} from './Users';
 
 function App() {
+
+  const [age, setAge] = useState();
+
+  const handleAgeChange = (e) => {
+    setAge(e.target.value);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header/>
+      <hr/>
+      <p className="title"> Age input</p>
+      <input type="number" className="myInput" placeholder="Enter your age" onChange={handleAgeChange}/>
+      <InputAge yourAge={age}/>
+      <hr/>
+      <Users/>
     </div>
   );
 }
